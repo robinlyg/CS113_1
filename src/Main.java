@@ -276,12 +276,12 @@ public class Main {
    public static Poly addPolys(ArrayList<Term> arrayListOne, ArrayList<Term> arrayListTwo) {
         ArrayList<Term> termArrayList = new ArrayList<>();
         int newCo;
-
+        int indexOfArrayTwo;
 
        for (int indexOfArrayOne =0; indexOfArrayOne < arrayListOne.size(); indexOfArrayOne++) {
            System.out.println("extract index from ArrayOne index =: " + indexOfArrayOne + " " + arrayListOne.get(indexOfArrayOne));
 
-            for (int indexOfArrayTwo = 0; indexOfArrayTwo<arrayListTwo.size(); indexOfArrayTwo++) {
+            for (indexOfArrayTwo = 0; indexOfArrayTwo<arrayListTwo.size(); indexOfArrayTwo++) {
                 System.out.println("extract index from ArrayTwo index =: " + indexOfArrayTwo + " " + arrayListTwo.get(indexOfArrayTwo));
 
                 if (arrayListOne.get(indexOfArrayOne).getEx() == arrayListTwo.get(indexOfArrayTwo).getEx()) {
@@ -291,24 +291,23 @@ public class Main {
                     System.out.println("what was added to the empty array list " + new Term(newCo, arrayListOne.get(indexOfArrayOne).getEx(),arrayListTwo.get(indexOfArrayTwo).getBase()));
 
                 }
+                else{
+                    termArrayList.add(arrayListOne.get(indexOfArrayOne));
+                    if(indexOfArrayTwo == 0)
+                    {
+                        termArrayList.add(arrayListTwo.get(indexOfArrayTwo));
+                       // indexOfArrayTwo +=1;
+
+                    }
+
+                }
+
             }
+            indexOfArrayTwo+=1;
+           //indexOfArrayOne +=1;
         }
 
-    /*   for (Term value : arrayListOne) {
 
-           if (!termArrayList.contains(value)) {
-               termArrayList.add(value);
-               System.out.println("added: " + value);
-           }
-       }
-       for (Term term : arrayListTwo) {
-
-           if (!termArrayList.contains(term)) {
-               termArrayList.add(term);
-               System.out.println("added: " + term);
-           }
-
-       }*/
         return new Poly(termArrayList);
     }
 
