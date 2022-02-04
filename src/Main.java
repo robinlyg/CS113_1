@@ -273,28 +273,42 @@ public class Main {
     }
 */
 
-   public static Poly addPolys(ArrayList<Term> p, ArrayList<Term> o) {
+   public static Poly addPolys(ArrayList<Term> arrayListOne, ArrayList<Term> arrayListTwo) {
         ArrayList<Term> termArrayList = new ArrayList<>();
         int newCo;
 
-       for (int i =0; i < p.size()-1; i++) {
 
-            for (int j = i; j<o.size()-1; j++) {
+       for (int indexOfArrayOne =0; indexOfArrayOne < arrayListOne.size(); indexOfArrayOne++) {
+           System.out.println("extract index from ArrayOne index =: " + indexOfArrayOne + " " + arrayListOne.get(indexOfArrayOne));
 
-                if (p.get(i).getEx() == o.get(j).getEx()) {
+            for (int indexOfArrayTwo = 0; indexOfArrayTwo<arrayListTwo.size(); indexOfArrayTwo++) {
+                System.out.println("extract index from ArrayTwo index =: " + indexOfArrayTwo + " " + arrayListTwo.get(indexOfArrayTwo));
 
-                    newCo = p.get(i).getCo() + o.get(j).getCo();
-                    termArrayList.add(new Term(newCo, p.get(i).getEx(),o.get(j).getBase()));
+                if (arrayListOne.get(indexOfArrayOne).getEx() == arrayListTwo.get(indexOfArrayTwo).getEx()) {
+                    System.out.println("adding together " + arrayListOne.get(indexOfArrayOne) +  arrayListTwo.get(indexOfArrayTwo));
+                    newCo = arrayListOne.get(indexOfArrayOne).getCo() + arrayListTwo.get(indexOfArrayTwo).getCo();
+                    termArrayList.add(new Term(newCo, arrayListOne.get(indexOfArrayOne).getEx(),arrayListTwo.get(indexOfArrayTwo).getBase()));
+                    System.out.println("what was added to the empty array list " + new Term(newCo, arrayListOne.get(indexOfArrayOne).getEx(),arrayListTwo.get(indexOfArrayTwo).getBase()));
 
-                } /*else if (p.get(i).getEx() != o.get(j).getEx()) {
-                    termArrayList.add(p.get(i));
-                    termArrayList.add(o.get(j));
-                }*/
+                }
             }
-
         }
 
+    /*   for (Term value : arrayListOne) {
 
+           if (!termArrayList.contains(value)) {
+               termArrayList.add(value);
+               System.out.println("added: " + value);
+           }
+       }
+       for (Term term : arrayListTwo) {
+
+           if (!termArrayList.contains(term)) {
+               termArrayList.add(term);
+               System.out.println("added: " + term);
+           }
+
+       }*/
         return new Poly(termArrayList);
     }
 

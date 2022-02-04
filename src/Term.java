@@ -15,8 +15,8 @@ public class Term  {
     public Term(int coefficient)
     {
         mCoefficient = coefficient;
-        mBase = ' ';
-        //mExponent = 1;
+        //mBase = ' ';
+       // mExponent = 0;
     }
     public Term (char base)
     {
