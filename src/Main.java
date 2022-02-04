@@ -276,26 +276,30 @@ public class Main {
    public static Poly addPolys(ArrayList<Term> arrayListOne, ArrayList<Term> arrayListTwo) {
         ArrayList<Term> termArrayList = new ArrayList<>();
         int newCo;
-        int indexOfArrayTwo;
 
-       for (int indexOfArrayOne =0; indexOfArrayOne < arrayListOne.size(); indexOfArrayOne++) {
-           System.out.println("extract index from ArrayOne index =: " + indexOfArrayOne + " " + arrayListOne.get(indexOfArrayOne));
 
-            for (indexOfArrayTwo = 0; indexOfArrayTwo<arrayListTwo.size(); indexOfArrayTwo++) {
-                System.out.println("extract index from ArrayTwo index =: " + indexOfArrayTwo + " " + arrayListTwo.get(indexOfArrayTwo));
+       for (int i =0; i < arrayListOne.size(); i++) {
+           //System.out.println("extract index from ArrayOne index =: " + i + " " + arrayListOne.get(i));
 
-                if (arrayListOne.get(indexOfArrayOne).getEx() == arrayListTwo.get(indexOfArrayTwo).getEx()) {
-                    System.out.println("adding together " + arrayListOne.get(indexOfArrayOne) +  arrayListTwo.get(indexOfArrayTwo));
-                    newCo = arrayListOne.get(indexOfArrayOne).getCo() + arrayListTwo.get(indexOfArrayTwo).getCo();
-                    termArrayList.add(new Term(newCo, arrayListOne.get(indexOfArrayOne).getEx(),arrayListTwo.get(indexOfArrayTwo).getBase()));
-                    System.out.println("what was added to the empty array list " + new Term(newCo, arrayListOne.get(indexOfArrayOne).getEx(),arrayListTwo.get(indexOfArrayTwo).getBase()));
+            for (int j = i; j<arrayListTwo.size(); j++) {
+                System.out.println("compare = index i: " +  i + " " + arrayListOne.get(i)  + " and index j " + j + " " + arrayListTwo.get(j));
 
+                if (arrayListOne.get(i).getEx() == arrayListTwo.get(j).getEx()) {
+                    System.out.println("adding together " + arrayListOne.get(i) +  arrayListTwo.get(j));
+                    newCo = arrayListOne.get(i).getCo() + arrayListTwo.get(j).getCo();
+                    termArrayList.add(new Term(newCo, arrayListOne.get(i).getEx(),arrayListTwo.get(j).getBase()));
+                    System.out.println("what was added to the empty array list " + new Term(newCo, arrayListOne.get(i).getEx(),arrayListTwo.get(j).getBase()));
+                    //how to continue to outter loop???????
                 }
                 else{
-                    termArrayList.add(arrayListOne.get(indexOfArrayOne));
-                    if(indexOfArrayTwo == 0)
+                    if(!termArrayList.contains(arrayListOne.get(i))) {
+                        termArrayList.add(arrayListOne.get(i));
+                        System.out.println("Added in ELSE statement from arrayListOne :" + arrayListOne.get(i));
+                    }
+                    if(j == 0)
                     {
-                        termArrayList.add(arrayListTwo.get(indexOfArrayTwo));
+                        termArrayList.add(arrayListTwo.get(j));
+                        System.out.println("Added in ELSE/if statement from arrayListTwo :" + arrayListTwo.get(j));
                        // indexOfArrayTwo +=1;
 
                     }
@@ -303,7 +307,7 @@ public class Main {
                 }
 
             }
-            indexOfArrayTwo+=1;
+
            //indexOfArrayOne +=1;
         }
 
