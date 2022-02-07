@@ -10,20 +10,20 @@ public class Main {
         ArrayList<Term> termListOne = new ArrayList<>();
         String input;
         int count = 0;
-        //Poly polyOne = new Poly();
-        //Poly myPoly = new Poly();
+        Poly polyOne = new Poly();
+        Poly myPoly = new Poly();
 
         //ask user for polynomial and store use input as a string
 
         System.out.println("Please enter polynomial");
         input = keyboard.nextLine();
         termListOne = checkPoly(input);
-        Poly polyOne = new Poly(termListOne);
+        //Poly polyOne = new Poly(termListOne);
 
         System.out.println("Please enter polynomial");
         input = keyboard.nextLine();
         termList = checkPoly(input);
-        Poly myPoly = new Poly(termList);
+        //Poly myPoly = new Poly(termList);
 
 
 /*
@@ -103,13 +103,13 @@ public class Main {
 
 
         System.out.println("\nPrint Poly ");
-        System.out.println("PolyOne: " + termListOne + "\ntermList " + termList);
+        System.out.println("ArrayListOne: " + termListOne + "\nArrayListTwo " + termList);
 
         System.out.println("add polys\n");
         Poly polySum = addPolys(termListOne, termList);
         System.out.println("Sum = " + polySum);
 
-    }//method
+    }//main method
 
     public static Term both(String term) {
         int co;
@@ -266,58 +266,34 @@ public class Main {
         return termList;
     }
 
-   /* public static boolean match(Term t, Term s)
-    {
-        System.out.println("t.getCo() = " + t.getEx() + "   s.getCo() = " + s.getEx());
-        return t.getEx() == s.getEx();
-    }
-*/
+    public static Poly addPolys(ArrayList<Term> arrayListOne, ArrayList<Term> arrayListTwo) {
+        ArrayList<Term> temp = arrayListOne;
+        int size = arrayListOne.size();
+        for (int i = 0; i < size;  i++) {
 
-   public static Poly addPolys(ArrayList<Term> arrayListOne, ArrayList<Term> arrayListTwo) {
-        ArrayList<Term> termArrayList = new ArrayList<>();
-        int newCo;
+            for (int j = 0; j < arrayListTwo.size(); j++)
+            {
 
-
-       for (int i =0; i < arrayListOne.size(); i++) {
-           //System.out.println("extract index from ArrayOne index =: " + i + " " + arrayListOne.get(i));
-
-            for (int j = i; j<arrayListTwo.size(); j++) {
-                System.out.println("compare = index i: " +  i + " " + arrayListOne.get(i)  + " and index j " + j + " " + arrayListTwo.get(j));
-
-                if (arrayListOne.get(i).getEx() == arrayListTwo.get(j).getEx()) {
-                    System.out.println("adding together " + arrayListOne.get(i) +  arrayListTwo.get(j));
-                    newCo = arrayListOne.get(i).getCo() + arrayListTwo.get(j).getCo();
-                    termArrayList.add(new Term(newCo, arrayListOne.get(i).getEx(),arrayListTwo.get(j).getBase()));
-                    System.out.println("what was added to the empty array list " + new Term(newCo, arrayListOne.get(i).getEx(),arrayListTwo.get(j).getBase()));
-                    //how to continue to outter loop???????
-                }
-                else{
-                    if(!termArrayList.contains(arrayListOne.get(i))) {
-                        termArrayList.add(arrayListOne.get(i));
-                        System.out.println("Added in ELSE statement from arrayListOne :" + arrayListOne.get(i));
-                    }
-                    if(j == 0)
-                    {
-                        termArrayList.add(arrayListTwo.get(j));
-                        System.out.println("Added in ELSE/if statement from arrayListTwo :" + arrayListTwo.get(j));
-                       // indexOfArrayTwo +=1;
-
-                    }
-
+                if (temp.get(i).equals(arrayListTwo.get(j)))
+                {
+                    temp.get(i).setCo((temp.get(i).getCo()) + (arrayListTwo.get(j).getCo()));
+                    break;
                 }
 
+                if (!temp.contains(arrayListTwo.get(j)))
+                {
+
+                    temp.add(arrayListTwo.get(j));
+                }
             }
-
-           //indexOfArrayOne +=1;
         }
-
-
-        return new Poly(termArrayList);
+        return new Poly(temp);
     }
+}
 
 
 
 
-}//class
+
 
 

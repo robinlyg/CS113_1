@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Term  {
     private int mCoefficient;
     private int mExponent;
     private char mBase;
+    private boolean mHasMatch;
+
 
 
     public Term(int coefficient, int exponent, char base)
@@ -11,41 +14,54 @@ public class Term  {
         mCoefficient = coefficient;
         mExponent = exponent;
         mBase = base;
+        mHasMatch = false;
+
     }
     public Term(int coefficient)
     {
         mCoefficient = coefficient;
-        //mBase = ' ';
-       // mExponent = 0;
+        mHasMatch = false;
+        //mExponent = 1;
+
     }
     public Term (char base)
     {
         mCoefficient = 1;
         mBase = base;
+        mHasMatch = false;
+
         //mExponent = 1;
     }
     public Term (int coefficient, int exponent)
     {
         mCoefficient = coefficient;
         mExponent = exponent;
+        mHasMatch = false;
+
     }
 
     public Term(int coefficient, char base)
     {
         mCoefficient = coefficient;
         mBase = base;
+        mHasMatch = false;
+        mExponent = 1;
     }
 
     public Term()
     {
         mCoefficient = 0;
         mExponent =0;
+        mHasMatch = false;
     }
+
+    public boolean getHasBase() {return mHasMatch;  }
 
     public void setCo(int newCo)
     {
         mCoefficient = newCo;
     }
+
     public void setExponent (int newEx) { mExponent = newEx; }
 
     public int getCo()
@@ -62,6 +78,8 @@ public class Term  {
     {
         return mBase;
     }
+
+    public void setMatch(boolean newMatch){mHasMatch = newMatch; }
 
     public String toString()
     {
@@ -100,12 +118,13 @@ public class Term  {
 //equals method
 
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Term)) return false;
         Term term = (Term) o;
-        return mCoefficient == term.mCoefficient && mExponent == term.mExponent && mBase == term.mBase;
+        return mExponent == term.mExponent;
     }
 
     @Override

@@ -3,9 +3,9 @@ import java.util.ArrayList;
 public class Poly extends Term {
     private ArrayList<Term> mTerm;
 
-    public Poly(ArrayList<Term> term )
-    {
-       mTerm = term;
+   public Poly(ArrayList<Term> term )
+   {
+      mTerm = term;
 
     }
 
@@ -14,33 +14,21 @@ public class Poly extends Term {
 
 
 //adding polys - if exponent are == we can add the coefficents which creates a new term
- /*  public Poly add(ArrayList<Term> p)
+    //adding polys, by comparing the two, we do not want to manipulate either existing poly
+    //but return a new poly that contains the added elements and unmatched elements
+    //if we work from one
+  /* public  add(ArrayList<Term> p)
     {
         Poly newPoly = new Poly();
-        ArrayList<Term> termArrayList = new ArrayList<>();
+        //ArrayList<Term> termArrayList = new ArrayList<>();
         int newCo;
         //need to loop thru poly's to see
-        for(Term t : p)
-        {
+        for(int i = 0; i < )
 
-            for(Term t2 : this.mTerm)
-            {// if terms have == ex if so we add
-                if(t2 == null)
-                {
-                    break;
-                }
-                if(t2.getEx() == t.getEx())
-                {
-                    newCo = t2.getCo() + t.getCo();
-                    termArrayList.add(new Term(newCo,t.getEx(), 'x'));
-
-                }
-            }
-        }
-
-        return newPoly.add(termArrayList);
 
     }*/
+
+
 
 
     @Override
